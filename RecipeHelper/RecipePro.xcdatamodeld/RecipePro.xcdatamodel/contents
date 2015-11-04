@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Cookware" representedClassName="Cookware" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="cookwares" inverseEntity="Recipe" syncable="YES"/>
+        <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Step" inverseName="cookwares" inverseEntity="Step" syncable="YES"/>
+    </entity>
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="1" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preparation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe" syncable="YES"/>
+        <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Step" inverseName="ingredients" inverseEntity="Step" syncable="YES"/>
+    </entity>
+    <entity name="Recipe" representedClassName="Recipe" syncable="YES">
+        <attribute name="difficulty" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="fav" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="prep" optional="YES" attributeType="Decimal" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="serves" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Decimal" syncable="YES"/>
+        <relationship name="cookwares" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cookware" inverseName="recipe" inverseEntity="Cookware" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient" syncable="YES"/>
+        <relationship name="steps" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Step" inverseName="recipe" inverseEntity="Step" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="recipe" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="Step" representedClassName="Step" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cookwares" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cookware" inverseName="step" inverseEntity="Cookware" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="step" inverseEntity="Ingredient" syncable="YES"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Recipe" inverseName="steps" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="tags" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Ingredient" positionX="-315" positionY="-738" width="126" height="133"/>
+        <element name="Recipe" positionX="-686" positionY="-769" width="128" height="223"/>
+        <element name="Step" positionX="-326" positionY="-520" width="128" height="103"/>
+        <element name="Tag" positionX="-684" positionY="-504" width="128" height="73"/>
+        <element name="Cookware" positionX="-488" positionY="-837" width="128" height="88"/>
+    </elements>
+</model>
